@@ -3,7 +3,7 @@ import {NavLink, useNavigate} from "react-router-dom";
 import {Circle, Menu, MessageCircle, X} from "lucide-react";
 
 import Logo from "../assets/Logo/logo.png";
-import logoMobile from "../assets/logo/logo-mobile.png";
+import logoMobile from "../assets/Logo/logo-mobile.png";
 import {useUser} from "@/context/AuthContext";
 import {getSocket} from "../utils/socket";
 import {t} from "i18next";

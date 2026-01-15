@@ -14,7 +14,7 @@ import {
   CreditCard,
   UserPlus,
 } from "lucide-react";
-import logoMobile from "../assets/logo/logo-mobile.png";
+import logoMobile from "../assets/Logo/logo-mobile.png";
 import {useUser} from "@/context/AuthContext";
 import {getSocket} from "../utils/socket";
 import {t} from "i18next";

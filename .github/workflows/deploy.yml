@@ -15,7 +15,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  # ← Updated to Node 20
+          node-version: '20'
           cache: 'npm'
 
       - name: Install Chromium
@@ -33,8 +33,9 @@ jobs:
           PUPPETEER_EXECUTABLE_PATH: '/usr/bin/chromium-browser'
           NODE_OPTIONS: '--max-old-space-size=4096'
 
-      - name: Deploy to Vercel (prebuilt)
-        run: npx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy to Vercel
+        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
+        working-directory: ./dist
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}

@@ -33,11 +33,16 @@ jobs:
           PUPPETEER_EXECUTABLE_PATH: '/usr/bin/chromium-browser'
           NODE_OPTIONS: '--max-old-space-size=4096'
 
-      - name: Deploy to Vercel
+      - name: Create temp directory without Git
+        run: |
+          mkdir -p /tmp/deploy
+          cp -r dist/* /tmp/deploy/
+
+      - name: Deploy to Vercel (no Git)
         run: |
           npm install -g vercel
-          cd dist
-          vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --yes --force
+          cd /tmp/deploy
+          vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}

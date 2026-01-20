@@ -1,49 +1,49 @@
-name: Build and Deploy to Vercel
+# name: Build and Deploy to Vercel
 
-on:
-  push:
-    branches: [main]
+# on:
+#   push:
+#     branches: [main]
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-          cache: 'npm'
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: '20'
+#           cache: 'npm'
 
-      - name: Install Chromium
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y chromium-browser
+#       - name: Install Chromium
+#         run: |
+#           sudo apt-get update
+#           sudo apt-get install -y chromium-browser
 
-      - name: Install dependencies
-        run: npm ci
+#       - name: Install dependencies
+#         run: npm ci
 
-      - name: Build with react-snap
-        run: npm run build
-        env:
-          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
-          PUPPETEER_EXECUTABLE_PATH: '/usr/bin/chromium-browser'
-          NODE_OPTIONS: '--max-old-space-size=4096'
+#       - name: Build with react-snap
+#         run: npm run build
+#         env:
+#           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
+#           PUPPETEER_EXECUTABLE_PATH: '/usr/bin/chromium-browser'
+#           NODE_OPTIONS: '--max-old-space-size=4096'
 
-      - name: Create temp directory without Git
-        run: |
-          mkdir -p /tmp/deploy
-          cp -r dist/* /tmp/deploy/
+#       - name: Create temp directory without Git
+#         run: |
+#           mkdir -p /tmp/deploy
+#           cp -r dist/* /tmp/deploy/
 
-      - name: Deploy to Vercel (no Git)
-        run: |
-          npm install -g vercel
-          cd /tmp/deploy
-          vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
+#       - name: Deploy to Vercel (no Git)
+#         run: |
+#           npm install -g vercel
+#           cd /tmp/deploy
+#           vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
+#         env:
+#           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+#           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+#           VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}

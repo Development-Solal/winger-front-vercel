@@ -1,0 +1,37 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy-cloudflare:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Build project
+        run: npm run build
+        env:
+          VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
+          VITE_FRONTEND_URL: ${{ secrets.VITE_FRONTEND_URL_CLOUDFLARE }}
+          VITE_PAYPAL_CLIENT_ID: ${{ secrets.VITE_PAYPAL_CLIENT_ID }}
+          VITE_PLAN_ID: ${{ secrets.VITE_PLAN_ID }}
+          VITE_PLAN_ID_PRO: ${{ secrets.VITE_PLAN_ID_PRO }}
+          VITE_RECAPTCHA_SITE_KEY: ${{ secrets.VITE_RECAPTCHA_SITE_KEY }}
+          
+      - name: Deploy to Cloudflare Pages (Direct Upload Project)
+        run: npx wrangler pages deploy dist --project-name=winger-front-vercel
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

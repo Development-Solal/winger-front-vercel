@@ -55,7 +55,7 @@ export const useCookieConsent = () => {
     const expires = "expires=" + expiryDate.toUTCString();
 
     const consentValue = JSON.stringify(consent);
-    document.cookie = `${COOKIE_CONSENT_NAME}=${consentValue};${expires};path=/;SameSite=none`;
+    document.cookie = `${COOKIE_CONSENT_NAME}=${consentValue};${expires};path=/;SameSite=strict`;
 
     setCookieConsent(consent);
     setShowPopup(false);

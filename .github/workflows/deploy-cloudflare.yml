@@ -1,4 +1,4 @@
-name: Deploy winger to Cloudflare Pages
+name: Deploy Winger front end to Cloudflare Pages
 
 on:
   push:

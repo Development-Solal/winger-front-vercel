@@ -34,12 +34,6 @@ jobs:
           VITE_PLAN_ID: ${{ secrets.VITE_PLAN_ID }}
           VITE_PLAN_ID_PRO: ${{ secrets.VITE_PLAN_ID_PRO }}
           VITE_RECAPTCHA_SITE_KEY: ${{ secrets.VITE_RECAPTCHA_SITE_KEY }}
-      
-      - name: Create Cloudflare Pages Project (if not exists)
-        run: npx wrangler pages project create winger-front --production-branch=main || true
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           
       - name: Deploy to Cloudflare Pages
         run: npx wrangler pages deploy dist --project-name=winger-front --branch=main

@@ -6,7 +6,7 @@ export const PAYPAL_PLAN_ID = import.meta.env.VITE_PLAN_ID;
 export const PAYPAL_PLAN_ID_PRO = import.meta.env.VITE_PLAN_ID_PRO;
 
 export const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
-export const FILE_SERVER_URL = import.meta.env.VITE_FILE_server_url;
+export const FILE_SERVER_URL = import.meta.env.VITE_FILE_SERVER_URL;
 
 export const apiUrl = {
   //Auth

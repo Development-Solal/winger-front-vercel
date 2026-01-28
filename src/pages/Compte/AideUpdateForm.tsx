@@ -27,7 +27,7 @@ import {GetAideByIdService, UpdateAideService} from "@/services/AideService";
 import {Textarea} from "@/components/ui/textarea";
 import {CustomSelect, CustomSelectMulti} from "@/components/ui/custom-select";
 import {AideModel} from "@/models/AideModel";
-import {BASE_URL} from "@/utils/api";
+import {FILE_SERVER_URL} from "@/utils/api";
 import toast from "react-hot-toast";
 import {Spinner} from "@/components/ui/spinner";
 import CropModal from "@/components/modals/CropModal";
@@ -202,7 +202,7 @@ const AideUpdateForm = () => {
                         // ProfileAide exists - show update form
                         setHasProfileAide(true);
                         setAideData(res);
-                        setPreview(res.profile_pic ? BASE_URL + "assets/" + res.profile_pic : null);
+                        setPreview(res.profile_pic ? FILE_SERVER_URL  + res.profile_pic : null);
                     } else {
                         // ProfileAide doesn't exist - pending consent
                         setHasProfileAide(false);

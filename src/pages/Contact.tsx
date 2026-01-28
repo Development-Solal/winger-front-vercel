@@ -71,7 +71,7 @@ export const Contact = () => {
         ...formData,
         marketingConsent: marketingConsent
       })
-        .then(res => {
+        .then(() => {
           setFormData({name: "", email: "", subject: "", message: ""});
           setUserAnswer("");
           generateCaptcha();

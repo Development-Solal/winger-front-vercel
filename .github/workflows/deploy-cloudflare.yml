@@ -34,6 +34,7 @@ jobs:
           VITE_PLAN_ID: ${{ secrets.VITE_PLAN_ID }}
           VITE_PLAN_ID_PRO: ${{ secrets.VITE_PLAN_ID_PRO }}
           VITE_RECAPTCHA_SITE_KEY: ${{ secrets.VITE_RECAPTCHA_SITE_KEY }}
+          VITE_FILE_SERVER_URL: ${{ secrets.VITE_FILE_SERVER_URL }}
           
       - name: Deploy to Cloudflare Pages
         run: npx wrangler pages deploy dist --project-name=winger-front --branch=main

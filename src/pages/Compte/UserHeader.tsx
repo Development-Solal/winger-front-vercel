@@ -1,4 +1,4 @@
-import {BASE_URL} from "@/utils/api";
+import {FILE_SERVER_URL} from "@/utils/api";
 
 interface UserHeaderProps {
   name: string | undefined;
@@ -13,7 +13,7 @@ export default function UserHeader({name, email, credits, image, subscription}: 
     <div className="bg-gradient-to-r from-mid-pink to-dark-pink px-4 py-6 text-white font-quicksand_book">
       <div className="container mx-auto flex flex-col lg:flex-row items-center gap-4">
         <div className="relative h-24 w-24 overflow-hidden rounded-full bg-white">
-          <img src={BASE_URL + "assets/" + image} alt="Profile picture" className="h-full w-full object-cover" />
+          <img src={FILE_SERVER_URL + image} alt="Profile picture" className="h-full w-full object-cover" />
         </div>
         <div className="flex-1 ">
           <h1 className="text-2xl font-bold text-center md:text-left">{name}</h1>

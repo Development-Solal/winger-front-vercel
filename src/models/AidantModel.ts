@@ -1,4 +1,4 @@
-import {ListCommuneModel, ListModel, ListTownModel} from "./ListModel";
+import {ListAidantRelationAideEnum, ListCommuneModel, ListModel, ListTownModel} from "./ListModel";
 
 export interface AidantModel {
     id: number;

@@ -28,7 +28,7 @@ import {getAllLists, loadOptionsCommunes, loadOptionsTowns} from "@/services/Lis
 import Background1 from "../../assets/Register/background-1.png";
 import {GetAidantByUserService} from "@/services/UserService";
 import {AidantModel} from "@/models/AidantModel";
-import {BASE_URL} from "@/utils/api";
+import {FILE_SERVER_URL} from "@/utils/api";
 import {DeactivateAidantService, UpdateAidantService} from "@/services/AidantService";
 import {Spinner} from "@/components/ui/spinner";
 import toast from "react-hot-toast";
@@ -94,7 +94,7 @@ const Aidant = () => {
             GetAidantByUserService(user.id)
                 .then(res => {
                     setAidantData(res);
-                    setPreview(BASE_URL + "assets/" + res.profile_pic);
+                    setPreview(FILE_SERVER_URL + res.profile_pic);
                 })
                 .catch(err => {
                     console.error(err);

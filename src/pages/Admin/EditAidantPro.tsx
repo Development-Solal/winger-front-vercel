@@ -12,7 +12,7 @@ import {loadOptionsTowns} from "@/services/ListService";
 import Background1 from "../../assets/Register/background-1.png";
 import {GetAidantProByUserService} from "@/services/UserService";
 import {AidantProModel} from "@/models/AidantModel";
-import {BASE_URL} from "@/utils/api";
+import {FILE_SERVER_URL} from "@/utils/api";
 import {UpdateAidantProService} from "@/services/AidantService";
 import {Textarea} from "@/components/ui/textarea";
 import toast from "react-hot-toast";
@@ -66,7 +66,7 @@ const EditAdminAidantPro = () => {
       GetAidantProByUserService(user)
         .then(res => {
           setAidantData(res);
-          setPreview(BASE_URL + "assets/" + res.profile_pic);
+          setPreview(FILE_SERVER_URL + res.profile_pic);
         })
         .catch(err => {
           console.error(err);

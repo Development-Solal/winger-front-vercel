@@ -11,12 +11,12 @@ import {Form, FormControl, FormField, FormItem, FormMessage} from "@/components/
 import {Input} from "@/components/ui/input";
 import {CustomAsyncSelect, CustomAsyncSelectMulti} from "@/components/ui/custom-async-select";
 import {
+    getAllLists,
     loadOptionsCommunes,
     loadOptionsLanguagesAide,
     loadOptionsNationalitiesAide,
     loadOptionsTowns,
 } from "@/services/ListService";
-import {getAllLists} from "@/services/ListService";
 import {ListModel} from "@/models/ListModel";
 import {ArrowUp, Cake, MapPin, UserRound, UserRoundPlus} from "lucide-react";
 import {Label} from "@radix-ui/react-label";
@@ -25,7 +25,7 @@ import {GetAideByIdService, UpdateAideService} from "@/services/AideService";
 import {Textarea} from "@/components/ui/textarea";
 import {CustomSelect, CustomSelectMulti} from "@/components/ui/custom-select";
 import {AideModel} from "@/models/AideModel";
-import {BASE_URL} from "@/utils/api";
+import {FILE_SERVER_URL} from "@/utils/api";
 import toast from "react-hot-toast";
 import {Spinner} from "@/components/ui/spinner";
 import CropModal from "@/components/modals/CropModal";
@@ -189,7 +189,7 @@ const EditAdminAide = () => {
             GetAideByIdService(aideId)
                 .then(res => {
                     setAideData(res);
-                    setPreview(res.profile_pic ? BASE_URL + "assets/" + res.profile_pic : null);
+                    setPreview(res.profile_pic ? FILE_SERVER_URL  + res.profile_pic : null);
                 })
                 .catch(err => console.error(err));
         }

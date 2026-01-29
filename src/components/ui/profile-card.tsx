@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {Card} from "@/components/ui/card";
 import {Heart, Star} from "lucide-react";
 import {ProfileCardModel} from "@/models/RechercheModel";
-import {BASE_URL} from "@/utils/api";
+import {FILE_SERVER_URL} from "@/utils/api";
 import {AddFavorite} from "@/services/FavoriteService";
 import {useUser} from "@/context/AuthContext";
 import toast from "react-hot-toast";
@@ -115,7 +115,7 @@ const ProfileCard: React.FC<ProfileCardModel> = ({
       <div>
         <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-full">
           {ProfileAidant ? (
-            <img src={BASE_URL + "assets/" + ProfileAidant?.profile_pic} alt="Profile photo" className="object-cover" />
+            <img src={FILE_SERVER_URL + ProfileAidant?.profile_pic} alt="Profile photo" className="object-cover" />
           ) : (
             <img src={ProfilePic} alt="Profile photo" className="object-cover" />
           )}

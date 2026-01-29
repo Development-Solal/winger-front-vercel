@@ -1,6 +1,6 @@
-import {Conversation, BlockUserModel} from "@/models/Chat";
+import {BlockUserModel, Conversation} from "@/models/Chat";
 import Avatar from "../../assets/profile-pic-icon.png";
-import {BASE_URL} from "@/utils/api";
+import {FILE_SERVER_URL} from "@/utils/api";
 import {useUser} from "@/context/AuthContext";
 import {formatTimestampChat} from "@/utils/utilts";
 import {UserX} from "lucide-react";
@@ -90,7 +90,7 @@ export default function ChatList({
                     ${activeChat?.id === chat.id ? "bg-[#f0f2f5]" : ""}`}>
                 <div className="relative mr-3">
                   <img
-                    src={BASE_URL + "assets/" + destinationParticipant?.ProfileAidant?.profile_pic || Avatar}
+                    src={FILE_SERVER_URL  + destinationParticipant?.ProfileAidant?.profile_pic || Avatar}
                     alt={destinationParticipant?.ProfileAidant?.first_name}
                     className="w-12 h-12 rounded-full object-cover"
                   />
@@ -155,7 +155,7 @@ export default function ChatList({
             <div key={user.id} className="flex items-center justify-between p-3 border-b border-[#f5f6f6]">
               <div className="flex items-center">
                 <img
-                  src={BASE_URL + "assets/" + user.Blocked?.profile_pic || Avatar}
+                  src={FILE_SERVER_URL  + user.Blocked?.profile_pic || Avatar}
                   alt={user.Blocked?.first_name}
                   className="w-12 h-12 rounded-full mr-3"
                 />

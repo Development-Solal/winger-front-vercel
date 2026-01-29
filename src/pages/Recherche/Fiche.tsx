@@ -1,40 +1,40 @@
-import { getAllAideByAidant, getFiche, getFicheFutureMoitie } from "@/services/RechercheService";
-import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {getAllAideByAidant, getFiche, getFicheFutureMoitie} from "@/services/RechercheService";
+import {useEffect, useState} from "react";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import {
-  MessageCircle,
-  MapPin,
-  Languages,
-  Sparkles,
-  BookOpen,
-  Ruler,
-  Cigarette,
-  Paintbrush,
+  ArrowLeft,
   Baby,
-  Heart,
-  PersonStanding,
-  FileText,
+  BookOpen,
+  Cigarette,
   Circle,
   CircleUser,
-  ArrowLeft,
+  FileText,
+  Heart,
+  Languages,
+  MapPin,
+  MessageCircle,
   MessageCircleQuestion,
+  Paintbrush,
+  PersonStanding,
+  Ruler,
+  Sparkles,
 } from "lucide-react";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
+import {Avatar, AvatarImage} from "@/components/ui/avatar";
+import {Badge} from "@/components/ui/badge";
+import {Card, CardContent} from "@/components/ui/card";
 
-import { FicheModel, FicheModelFM, isFavorite, ProfileCardModel } from "@/models/RechercheModel";
-import { BASE_URL } from "@/utils/api";
+import {FicheModel, FicheModelFM, isFavorite, ProfileCardModel} from "@/models/RechercheModel";
+import {FILE_SERVER_URL} from "@/utils/api";
 import AvatarImg from "../../assets/profile-pic-icon.png";
-import { useUser } from "@/context/AuthContext";
-import { Button } from "@/components/ui/button";
+import {useUser} from "@/context/AuthContext";
+import {Button} from "@/components/ui/button";
 import ProfileCard from "@/components/ui/profile-card";
-import { Spinner } from "@/components/ui/spinner";
-import { t } from "i18next";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { HeartPlus } from "@/components/ui/HeartPlus";
-import { GetAllAideService } from "@/services/AideService";
-import { AddFavorite } from "@/services/FavoriteService";
+import {Spinner} from "@/components/ui/spinner";
+import {t} from "i18next";
+import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
+import {HeartPlus} from "@/components/ui/HeartPlus";
+import {GetAllAideService} from "@/services/AideService";
+import {AddFavorite} from "@/services/FavoriteService";
 import toast from "react-hot-toast";
 import ImageModal from "@/components/modals/ImageModal";
 
@@ -259,13 +259,13 @@ const Fiche = () => {
               <div className="flex flex-col sm:flex-row items-center sm:items-center   gap-3 md:gap-4 p-3 md:p-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-t-lg">
                 <div
                   onClick={() => {
-                    setSelectedProfilePic(BASE_URL + "assets/" + ficheData?.ProfileAidant?.profile_pic);
+                    setSelectedProfilePic(FILE_SERVER_URL  + ficheData?.ProfileAidant?.profile_pic);
                     setModalOpen(true);
                   }}
                   className="cursor-pointer">
                   <Avatar className="h-16 w-16 md:h-24 md:w-24 bg-white rounded-sm flex-shrink-0">
                     <AvatarImage
-                      src={BASE_URL + "assets/" + ficheData?.ProfileAidant?.profile_pic}
+                      src={FILE_SERVER_URL  + ficheData?.ProfileAidant?.profile_pic}
                       alt="Photo de profil"
                     />
                   </Avatar>
@@ -345,14 +345,14 @@ const Fiche = () => {
                   <div
                     onClick={() => {
                       setSelectedProfilePic(
-                        ficheData?.profile_pic ? BASE_URL + "assets/" + ficheData?.profile_pic : AvatarImg
+                        ficheData?.profile_pic ? FILE_SERVER_URL  + ficheData?.profile_pic : AvatarImg
                       );
                       setModalOpen(true);
                     }}
                     className="cursor-pointer">
                     <Avatar className="h-16 w-16 md:h-24 md:w-24 bg-white rounded-sm flex-shrink-0">
                       {ficheData?.profile_pic ? (
-                        <AvatarImage src={BASE_URL + "assets/" + ficheData?.profile_pic} alt="Photo de l'aidé" />
+                        <AvatarImage src={FILE_SERVER_URL  + ficheData?.profile_pic} alt="Photo de l'aidé" />
                       ) : (
                         <AvatarImage src={AvatarImg} alt="Photo de l'aidé" />
                       )}
@@ -419,14 +419,14 @@ const Fiche = () => {
                 <div
                   onClick={() => {
                     setSelectedProfilePic(
-                      ficheData?.profile_pic ? BASE_URL + "assets/" + ficheData?.profile_pic : AvatarImg
+                      ficheData?.profile_pic ? FILE_SERVER_URL  + ficheData?.profile_pic : AvatarImg
                     );
                     setModalOpen(true);
                   }}
                   className="cursor-pointer">
                   <Avatar className="h-16 w-16 md:h-24 md:w-24 bg-white rounded-sm flex-shrink-0">
                     {ficheData?.profile_pic ? (
-                      <AvatarImage src={BASE_URL + "assets/" + ficheData?.profile_pic} alt="Photo de l'aidé" />
+                      <AvatarImage src={FILE_SERVER_URL + ficheData?.profile_pic} alt="Photo de l'aidé" />
                     ) : (
                       <AvatarImage src={AvatarImg} alt="Photo de l'aidé" />
                     )}

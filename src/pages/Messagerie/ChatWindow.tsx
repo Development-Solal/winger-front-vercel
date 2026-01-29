@@ -1,13 +1,13 @@
-import { useState, useRef, useEffect } from "react";
-import { ChevronLeft, MoreVertical, Send, Smile } from "lucide-react";
-import type { Conversation, Message } from "@/models/Chat";
-import { BASE_URL } from "@/utils/api";
+import {useEffect, useRef, useState} from "react";
+import {ChevronLeft, MoreVertical, Send, Smile} from "lucide-react";
+import type {Conversation, Message} from "@/models/Chat";
+import {FILE_SERVER_URL} from "@/utils/api";
 import Avatar from "../../assets/profile-pic-icon.png";
-import { useUser } from "@/context/AuthContext";
-import { formatTimestamp } from "@/utils/utilts";
+import {useUser} from "@/context/AuthContext";
+import {formatTimestamp} from "@/utils/utilts";
 import EmojiPicker from "./EmojiPicket";
-import { t } from "i18next";
-import { GetAllAideService } from "@/services/AideService";
+import {t} from "i18next";
+import {GetAllAideService} from "@/services/AideService";
 
 interface ChatWindowProps {
   chat: Conversation;
@@ -182,7 +182,7 @@ export default function ChatWindow({
 
         <div className="flex items-center flex-1">
           <img
-            src={BASE_URL + "assets/" + destinationParticipant?.ProfileAidant?.profile_pic || Avatar}
+            src={FILE_SERVER_URL  + destinationParticipant?.ProfileAidant?.profile_pic || Avatar}
             alt={destinationParticipant?.ProfileAidant?.first_name}
             className="w-10 h-10 rounded-full mr-3 cursor-pointer"
             onClick={() => openFiche()}

@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import {Button} from "@/components/ui/button";
 import IconHand from "@/assets/Icons/icon-hand.png";
 import Banner from "../assets/Home/accueil-banner.png";
 import Background from "../assets/Home/background.webp";
@@ -13,16 +13,16 @@ import Image6 from "../assets/Home/app-store-button.png";
 import IconWhiteHeart from "../assets/Icons/icon-white-heart.webp";
 import IconBlueHeart from "../assets/Icons/icon-blue-heart.webp";
 import ProfileCard from "@/components/ui/profile-card";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { ProfileCardModel } from "@/models/RechercheModel";
-import { useUser } from "@/context/AuthContext";
-import { searchAll } from "@/services/RechercheService";
-import { t } from "i18next";
-import { BASE_URL } from "@/utils/api";
-import { motion } from "framer-motion";
-import { useRecherche } from "@/context/RechercheContext";
-import { GetAllAideService } from "@/services/AideService";
+import {useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {ProfileCardModel} from "@/models/RechercheModel";
+import {useUser} from "@/context/AuthContext";
+import {searchAll} from "@/services/RechercheService";
+import {t} from "i18next";
+import {FILE_SERVER_URL} from "@/utils/api";
+import {motion} from "framer-motion";
+import {useRecherche} from "@/context/RechercheContext";
+import {GetAllAideService} from "@/services/AideService";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -81,7 +81,7 @@ const [selectedAideMain, setSelectedAideMain] = useState<string>("");
           {/* Video Section */}
           <div className="bg-light-pink rounded-xl shadow-lg shadow-gray-500/50 relative mx-auto w-full max-w-2xl">
             <div className=" p-4 rounded-lg">
-              <video src={BASE_URL + "assets/winger.mp4"} controls muted playsInline className="w-full rounded-lg" />
+              <video src={FILE_SERVER_URL + "video/winger.mp4"} controls muted playsInline className="w-full rounded-lg" />
             </div>
             <div className=" bg-logo-red text-white py-2 mx-6 mb-6 rounded-md text-center text-sm font-semibold">
               {t("home_page.video")}
